@@ -1,0 +1,712 @@
+<html>
+<head></head>
+<body bgcolor="">
+
+<form name="myForm" action="adm1.php" method="post" onsubmit="return validateForm()">
+<fieldset><legend>Fill the (* Mandatory) details</legend>
+<table style="width:100%;">
+<tr>
+<td style="width:30%;">Name of the Applicant (with initials) </td>
+<td colspan="2"><input type="text" name="n" placeholder="eg., Kamaraj.K"><font color="red">*</font><p id="head1" style="color:red"></p></td>
+</tr>
+
+<tr>
+<td>Father's / Mother's / Guardian's Name </td>
+<td colspan="2"><input type="text" name="f"><font color="red">*</font></td>
+</tr>
+
+<!--<tr>
+<td>Select Your Blood Group</td>
+<td colspan="2"><select id="bgr" name="bg">
+<option value="A+">A+</option>
+<option value="A-">A-</option>
+<option value="B+">B+</option>
+<option value="B-">B-</option>
+<option value="AB+">AB+</option> 
+<option value="AB-">AB-</option>
+<option value="O+">O+</option>
+<option value="O-">O-</option>
+</select>
+</td>
+</tr>-->
+
+<tr>
+<td>Gender</td>
+<td><input type="radio" name="gender" value="male" checked>Male<input type="radio" name="gender" value="female">Female<font color="red">*</font></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Date of Birth</td>
+<td colspan="2"><input type="text" name="dob" placeholder="dd-mm-yyyy"><font color="red">*</font></td>
+</tr>
+
+<tr>
+<td>Address for Contact</td>
+<td colspan="2"><input type="text" name="address" placeholder="Door No,Street Name"><font color="red">*</font></td>
+</tr>
+
+<tr>
+<td>Name of the City/Town/Village</td>
+<td colspan="2"><input type="text" name="ctv" ><font color="red">*</font></td>
+</tr>
+
+<tr>
+<td>Name of the District</td>
+<td colspan="2"><input type="text" name="district" ><font color="red">*</font></td>
+</tr>
+
+<tr>
+<td>Pincode</td>
+<td colspan="2"><input type="text" name="pin" ></td>
+</tr>
+
+<tr>
+<td>Father's/Mother's/Guardian's Mobile Number </td>
+<td colspan="2"><input type="text" name="mn" ><font color="red">*</font><p id="head2" style="color:red"></p></td>
+</tr>
+
+<tr>
+<td>Email id (if any) </td>
+<td colspan="2"><input type="text" name="email" ></td><p id="head" style="color:red"></p>
+</tr>
+
+
+<tr>
+<td>Year of passing Diploma </td>
+<td>
+<input type="number" name="yop" placeholder="eg.2018">
+</td>
+</tr>
+
+
+
+<tr>
+<td>Name of the Polytechnic College in which studied</td>
+<td colspan="2"><input type="text" name="sc" placeholder="Polytechnic Name"><font color="red">*</font></td>
+</tr>
+
+<tr>
+<td>Place of the Polytechnic College</td>
+<td colspan="2"><input type="text" name="scp" placeholder="Place"><font color="red">*</font></td>
+</tr>
+
+
+<tr>
+<td>Mode of Study</td>
+<td><select id="mode" name="mos" onchange="show();">
+<option value="-1">Choose</option>
+<option value="FTD">Full Time Diploma</option>
+<option value="LED">Lateral Entry Diploma</option>
+<option value="SD">Sandwich Diploma</option>
+<option value="PTD">Part Time Diploma</option>
+</select></td>
+<tr>
+
+<tr>
+<td>
+<div id="1" style="display:none;">
+
+<table align="center">
+<tr>
+	<th>Semester</th>
+	<th>Number of Subjects</th>
+	<th>Total Marks Secured</th>
+</tr>
+<tr>
+<td><input type="number" placeholder="semester 1" value="1" name="sem[]"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+<tr>
+<td><input type="number" placeholder="semester 2" name="sem[]" value="2"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+
+</tr>
+
+<tr>
+
+<td><input type="number" placeholder="semester 3" name="sem[]" value="3"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+<tr>
+
+<td><input type="number" placeholder="semester 4" name="sem[]" value="4"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+
+<tr>
+
+<td><input type="number" placeholder="semester 5"name="sem[]" value="5"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+
+<tr>
+
+<td><input type="number" placeholder="semester 6" name="sem[]" value="6"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number"  name="m[]" min="0" placeholder="Type 0, if awaiting for results!"></td>
+</tr>
+
+</table>
+</div>
+
+
+<div id="2" style="display:none;">
+<table>
+<tr>
+
+<td><input type="number" placeholder="semester 3" name="sem[]" value="3"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+<tr>
+
+<td><input type="number" placeholder="semester 4" name="sem[]" value="4"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+
+<tr>
+
+<td><input type="number" placeholder="semester 5"name="sem[]" value="5"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+
+<tr>
+
+<td><input type="number" placeholder="semester 6" name="sem[]" value="6"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+ 
+</table>
+</div>
+
+<div id="3" style="display:none;">
+
+<table align="center">
+<tr>
+	<th>Semester</th>
+	<th>Number of Subjects</th>
+	<th>Total Marks Secured</th>
+</tr>
+<tr>
+<td><input type="number" placeholder="semester 1" value="1" name="sem[]"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+<tr>
+<td><input type="number" placeholder="semester 2" name="sem[]" value="2"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+
+</tr>
+
+<tr>
+
+<td><input type="number" placeholder="semester 3" name="sem[]" value="3"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+<tr>
+
+<td><input type="number" placeholder="semester 4" name="sem[]" value="4"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+
+<tr>
+
+<td><input type="number" placeholder="semester 5"name="sem[]" value="5"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+
+<tr>
+
+<td><input type="number" placeholder="semester 6" name="sem[]" value="6"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+<tr>
+
+<td><input type="number" placeholder="semester 7" name="sem[]" value="7"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+
+
+</table>
+</div>
+
+
+
+<div id="4" style="display:none;">
+
+<table align="center">
+<tr>
+	<th>Semester</th>
+	<th>Number of Subjects</th>
+	<th>Total Marks Secured</th>
+</tr>
+<tr>
+<td><input type="number" placeholder="semester 1" value="1" name="sem[]"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+<tr>
+<td><input type="number" placeholder="semester 2" name="sem[]" value="2"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+
+</tr>
+
+<tr>
+
+<td><input type="number" placeholder="semester 3" name="sem[]" value="3"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+<tr>
+
+<td><input type="number" placeholder="semester 4" name="sem[]" value="4"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+
+<tr>
+
+<td><input type="number" placeholder="semester 5"name="sem[]" value="5"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+
+<tr>
+
+<td><input type="number" placeholder="semester 6" name="sem[]" value="6"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+<tr>
+
+<td><input type="number" placeholder="semester 7" name="sem[]" value="7"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+<tr>
+
+<td><input type="number" placeholder="semester 8" name="sem[]" value="8"></td>
+
+<td><input type="number" placeholder="Number of Subjects" name="sn[]"></td>
+
+<td><input type="number" placeholder="Total Marks" name="m[]"></td>
+</tr>
+
+</table>
+</div>
+
+</td>
+</tr>
+
+
+
+<tr>
+<td>Branch of Study in Diploma</td>
+<td>
+<select id="branch" name="bos" onchange="show1()">
+<option value="-1">Choose</option>
+<option value="CSE">CSE</option>
+<option value="IT">IT</option>
+<option value="ECE">ECE</option>
+<option value="EEE">EEE</option>
+<option value="EIE">EIE</option>
+<option value="Civil">Civil</option>
+<option value="Mechanical">Mechanical</option>
+<option value="Chemical">Chemical</option>
+
+
+</select>
+</td></tr>
+<tr>
+<td>
+<div class="div11" id="11" style="display:none;">
+<table>
+<tr><td>Choose min. 3 Courses of Your Preference</td></tr>
+<tr>
+<td><input type="checkbox" name="Extras[]" value="CSE"><label>B.E.Computer Science and Engineering</label><font color="green">(NBA Accredited)</font></td>
+</tr>
+
+
+<tr>
+<td><input type="checkbox" name="Extras[]" value="ECE"><label>B.E.Electronics and Communication Engineering</label><font color="green">(NBA Accredited)</font></td>
+</tr>
+<tr>
+<td><input type="checkbox" name="Extras[]" value="EEE"><label>B.E.Electrical and Electronics Engineering</label></td>
+</tr>
+
+<tr>
+<td><input type="checkbox" name="Extras[]" value="IT"><label>B.Tech.Information Technology</label></td>
+</tr>
+
+<tr>
+<td><input type="checkbox" name="Extras[]" value="AD"><label>B.Tech.Artificial Intelligence and Data Science</label></td>
+</tr>
+
+
+</table>
+
+
+
+</div>
+
+
+<div class="div12" id="12" style="display:none;">
+<table>
+<tr>
+<td><input type="checkbox" name="Extras[]" value="CIVIl"><label>B.E.Civil Engineering</label></td>
+</tr>
+</table>
+</div>
+
+
+<div class="div13" id="13" style="display:none;">
+<table>
+<tr>
+<td><input type="checkbox" name="Extras[]" value="Mechanical"><label>B.E.Mechanical Engineering</label><font color="green">(NBA Accredited)</font></td>
+</tr>
+<tr>
+<td><input type="checkbox" name="Extras[]" value="Mechatronics"><label>B.E.Mechatronics Engineering</label></td>
+</tr>
+</table>
+</div>
+
+
+<div class="div14" id="14" style="display:none;">
+<table>
+<tr>
+<td><input type="checkbox" name="Extras[]" value="BT"><label>B.Tech. Bio Technology<font color="green">(NBA Accredited)</font></label></td>
+</tr>
+</table>
+</div>
+
+
+
+<!--<div class="div15" id="15" style="display:none;">
+<table>
+<tr>
+<td><input type="checkbox" name="Extras[]" value="PT"><label>B.Tech. Polymer Technology</label></td>
+</tr>
+</table>
+</div>-->
+
+
+
+</td>
+</tr>
+
+
+<!--<tr><td><input type="hidden" name="Extras" value=""></td><td></td></tr>-->
+
+<!--<tr>
+<td><input type="checkbox" name="Extras[]" value="MTR" disabled><label>B.Tech., Artificial Intelligence and Data Analytics <br><font color="green">(Subject to approval from AICTE and Anna University,Chennai)</font></label></td>
+<td colspan="2"></td>
+</tr>-->
+
+<tr><td><label id="demo"></label></td></tr>
+
+
+<tr>
+<td>Any Specific Queries, you can post here!</td><td><textarea rows="7" cols="50" name="comm"></textarea></td>
+</tr>
+<tr></tr>
+<tr>
+<td colspan="3" align="center"><input type="submit" name="sb" value="REGISTER"></td>
+</tr>
+</table>
+</div>
+</fieldset>
+
+</form>
+<script>
+limit = 0; //set limit
+var selectedItems=[];
+checkboxes = document.querySelectorAll('.div11 input[type="checkbox"]'); //select all checkboxes
+for (i = 0; i < checkboxes.length; i++) {
+  checkboxes[i].onclick = function() { 
+    //call function on click and send current element as param
+    var selchb=checker(this);
+    document.getElementById("demo").innerHTML="You have selected "+selchb+" courses";
+  }
+}
+function checker(elem) 
+{
+var selectedItems = [];
+  if (elem.checked) 
+  { //if checked, increment counter
+    limit++;
+  } 
+  else 
+  {
+    limit--; //else, decrement counter
+  }
+
+  for (i = 0;i < checkboxes.length; i++) 
+  { // loop through all 
+    if (limit == 3) 
+    {
+      if (!checkboxes[i].checked) 
+      {
+        checkboxes[i].disabled = true; 
+        // and disable unchecked checkboxes
+      }
+    } 
+    else 
+    { //if limit is less than two
+      if (!checkboxes[i].checked) 
+      {
+        checkboxes[i].disabled = false; 
+        // enable unchecked checkboxes
+      }
+    }
+  
+ if(checkboxes[i].checked==true)
+ {
+        
+	selectedItems.push(checkboxes[i].value);
+
+ }
+}
+return selectedItems;
+}
+
+
+
+
+function validateForm()
+{
+  
+  var name=document.myForm.n.value;  
+  var fname=document.myForm.f.value;  
+  var dob=document.myForm.dob.value;  
+  var address=document.myForm.address.value;  
+  var place=document.myForm.ctv.value;  
+  var district=document.myForm.district.value;  
+  var pincode=document.myForm.pin.value;
+
+  var mobile=document.myForm.mn.value;  
+  var mob = /^[1-9]{1}[0-9]{9}$/;   
+  
+  var x=document.myForm.email.value;  
+  var atposition=x.indexOf("@");  
+  var dotposition=x.lastIndexOf(".");
+  
+  
+  
+  if(name==""||fname==""||dob==""||address==""||place==""||district==""||pincode=="")
+  {
+  document.getElementById("head1").innerHTML="Please Enter values for the Empty Fields";
+  return false;   
+  }  
+    
+  else if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length)
+  {  
+  document.getElementById("head").innerHTML="Please Enter the Valid Email address";
+  document.myForm.email.focus();
+  return false;  
+  }  
+  
+ 
+ else if (mob.test(mobile)==false) {
+    document.getElementById("head2").innerHTML="Invalid number; must be ten digits";
+    document.myForm.mn.focus();
+    return false;
+   }
+  
+  else 
+  {
+    return true;
+  }
+}
+</script>
+<script>
+function show()
+{
+var current=document.getElementById("mode");
+var selected1=document.getElementById("1");
+selected2=document.getElementById("2");
+selected3=document.getElementById("3");
+selected4=document.getElementById("4");
+if(current.value=="FTD")
+{
+  selected1.style.display="block";
+}
+else
+{
+   selected1.style.display="none";
+}
+
+if(current.value=="LED")
+{
+  selected2.style.display="block";
+}
+else
+{
+   selected2.style.display="none";
+}
+
+if(current.value=="SD")
+{
+  selected3.style.display="block";
+}
+else
+{
+   selected3.style.display="none";
+}
+
+if(current.value=="PTD")
+{
+  selected4.style.display="block";
+}
+else
+{
+   selected4.style.display="none";
+}
+
+
+}
+</script>
+<script>
+function show1()
+{
+var branch=document.getElementById("branch");
+var selected11=document.getElementById("11");
+var selected12=document.getElementById("12");
+var selected13=document.getElementById("13");
+var selected14=document.getElementById("14");
+var selected15=document.getElementById("15");
+
+
+if(branch.value=="CSE" || branch.value=="IT" || branch.value=="ECE" || branch.value=="EEE" || branch.value=="EIE" )
+{
+  selected11.style.display="block";
+}
+else
+{
+   selected11.style.display="none";
+}
+
+if(branch.value=="Civil")
+{
+  selected12.style.display="block";
+}
+else
+{
+   selected12.style.display="none";
+}
+
+if(branch.value=="Mechanical")
+{
+  selected13.style.display="block";
+}
+else
+{
+   selected13.style.display="none";
+}
+
+if(branch.value=="Chemical" )
+{
+  selected14.style.display="block";
+}
+else
+{
+   selected14.style.display="none";
+}
+if(branch.value=="Plastic" )
+{
+  selected15.style.display="block";
+}
+else
+{
+   selected15.style.display="none";
+}
+}
+</script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<html>
+    
+<head>
+    <!-- Title Page-->
+    <title>Event Header Page</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+    <style>
+        #left {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            height: 30%;
+            width: 20%;
+        }
+
+
+        #right {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 30%;
+            width: 20%;
+        }
+
+        #center {
+            position: relative;
+            height: 80px;
+            width: 100%;
+        }
+        #center1 {
+            position: relative;
+            height: 50px;
+            width: 100%;
+        }
+        @media all and (max-width: 499px) {
+
+            #left,
+            #right {
+                width: 13%;
+                height: 7%;
+            }
+
+            #center {
+                position: relative;
+                height: 70px;
+                width: 75%;
+                left: 12.5%
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotateY(0deg);
+                moz-transform: rotateY(0deg);
+                ms-transform: rotateY(0deg);
+            }
+
+            to {
+                transform: rotateY(360deg);
+                moz-transform: rotateY(360deg);
+                ms-transform: rotateY(360deg);
+            }
+        }
+
+        .imageSpin {
+            animation-name: spin;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-duration: 5s;
+            -webkit-animation-name: spin;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-duration: 5s;
+        }
+    </style>
+
+</head>
+
+<body>
+    <img id="left" src="images\logo-D.gif" class="imageSpin">
+    <img id="right" src="images\logo-D.gif" class="imageSpin">
+    <img id="center" src="images\kcetlogo.jpg">
+    <img id="center1" src="images\counselingcode12.jpg">
+    <h1 style="text-align: center;"><b>Admission 2021-2022</b></h1>
+    
+</body>
+
+</html>

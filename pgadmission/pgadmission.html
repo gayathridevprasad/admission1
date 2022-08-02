@@ -1,0 +1,209 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script type="text/javascript">
+ //<![CDATA[ 
+ // array of possible countries in the same order as they appear in the country selection list 
+ var countryLists = new Array(7) 
+countryLists["empty"] = ["Select your UG "]; 
+
+countryLists["M.Tech Polymer Science and Engineering"] = ["B.E/B.Tech Polymer Technology/Engineering", "B.E/B.Tech Rubber & Plastic Technology", "B.E/B.Tech Chemical Engineering", "B.E/B.Tech Mechanical Engineering", "B.E/B.Tech Manufacturing Engineering", "B.E/B.Tech Production Engineering", "B.E/B.Tech Material Science and Engineering", "B.E/B.Tech Nano Technology", "B.E/B.Tech Printing Technology", "B.E/B.Tech Industrial Engineering", "B.E/B.Tech Leather Technology", "B.E/B.Tech Textile Engineering/Technology", "B.E/B.Tech Civil Engineering", "B.E/B.Tech Agricultural Engineering", "M.Sc. General Chemistry", "M.Sc. Applied Chemistry", "M.Sc. Polymer Chemistry", "M.Sc. Analytical Chemistry", "M.Sc. Material Science"]; 
+
+countryLists["M.Tech Biotechnology"] = ["B.Tech. Biotechnology", "B.Tech. Chemical Engineering", "B.Pharm", "M.Sc. Biochemistry", "M.Sc. Microbiology", "M.Sc. Biotechnology"]; 
+
+countryLists["M.E Communication and Networking"]= ["B.E Electronics and Engineering", "B.E Electronics and Communication Engineering", "B.E Electronics and Tele-Communication Engineering"]; 
+
+countryLists["M.E Manufacturing Engineering"] = ["B.E Mechanical Engineering", "B.E Mechatronics Engineering", "B.E Automobile Engineering", "B.E Material Science and Engineering", "B.E/B.Tech Production Engineering/Technology", "B.E Industrial Engineering", "B.E Metallurgy Engineering", "B.E Mechanical and Automation Engineering", "B.E/B.Tech Manufacturing Engineering/Technology"]; 
+
+countryLists["M.E Power Systems Engineering"] = ["B.E. Electrical and Electronics Engineering"]; 
+
+countryLists["M.E Structural Engineering"] = ["B.E/B.Tech Civil Engineering"]; 
+
+ /* CountryChange() is called from the onchange event of a select element. 
+ * param selectObj - the select object which fired the on change event. 
+ */ 
+ function countryChange(selectObj) { 
+ // get the index of the selected option 
+ var idx = selectObj.selectedIndex; 
+ // get the value of the selected option 
+ var which = selectObj.options[idx].value; 
+ // use the selected option value to retrieve the list of items from the countryLists array 
+ cList = countryLists[which]; 
+ // get the country select element via its known id 
+ var cSelect = document.getElementById("country"); 
+ // remove the current options from the country select 
+ var len=cSelect.options.length; 
+ while (cSelect.options.length > 0) { 
+ cSelect.remove(0); 
+ } 
+ var newOption; 
+ // create new options 
+ for (var i=0; i<cList.length; i++) { 
+ newOption = document.createElement("option"); 
+ newOption.value = cList[i];  // assumes option string and value are the same 
+ newOption.text=cList[i]; 
+ // add the new option 
+ try { 
+ cSelect.add(newOption);  // this will fail in DOM browsers but is needed for IE 
+ } 
+ catch (e) { 
+ cSelect.appendChild(newOption); 
+ } 
+ } 
+ } 
+//]]>
+</script>
+</head>
+<body bgcolor="">
+
+<form name="myForm" action="admpg1.php" method="post" onsubmit="return validateForm()" enctype = "multipart/form-data">
+<fieldset style="width:95%;"><legend>All fields (details) are Mandatory</legend>
+<div class="checkboxdiv">
+<table style="width:100%;">
+<tr>
+<td> <label for="continent">You wish to apply for </label> </td>
+<td> <select id="continent" name="continent" onchange="countryChange(this);">
+    <option value="empty">Select the course you want to apply</option>
+    <option value="M.Tech Polymer Science and Engineering">M.Tech Polymer Science and Engineering</option>
+    <option value="M.Tech Biotechnology">M.Tech Biotechnology</option>
+    <option value="M.E Communication and Networking">M.E Communication and Networking</option>
+    <option value="M.E Manufacturing Engineering">M.E Manufacturing Engineering</option>
+    <option value="M.E Power Systems Engineering">M.E Power Systems Engineering</option>
+    <option value="M.E Structural Engineering">M.E Structural Engineering</option>
+  </select> 
+ </td>
+ </tr>
+
+ <tr> 
+  <td> <label for="country">UG degree (Only eligible courses are listed here) </label> </td> 
+  <td> <select id="country" name="country"> 
+    <option value="0">Select your course</option>
+  </select> </td>
+</tr>
+
+<tr>
+<td>Percentage / CGPA </td>
+<td colspan="2"><input type="number" name="cgpa" max=10 step=0.01 placeholder="Upto 7th/ Final Score "></td>
+</tr>
+
+<tr>
+<td>Year of Passing </td>
+<td colspan="2"><input type="number" name="yop" max="2021"  placeholder="Year of graduation" required ></td>
+</tr>
+
+<tr>
+<td> Have  you qualified in GATE? (If yes type your score and year)</td>
+<td>
+<select name="one" onchange="if (this.value=='yes'){this.form['scr'].style.visibility='visible'; this.form['yr'].style.visibility='visible'} else {this.form['yes'].style.visibility='hidden'; this.form['yr'].style.visibility='hidden'};">
+<option value="" selected="selected">Select...</option>
+
+<option value="no">NO</option>
+<option value="yes">YES</option>
+
+</select>
+<input type="number" name="scr" max=100 step=0.01 style="visibility:hidden" placeholder="Type your gate score here";/> 
+<input type="number" name="yr" max=2021 step=1 style="visibility:hidden" placeholder="Year";/>
+</td>
+</tr>
+
+<tr>
+<td>TANCET Score if Appeared </td>
+<td colspan="2"> <input type="number" name="tancet" max=100 step=0.01 value=0 placeholder="Type Tancet score here";/>
+</tr>
+
+<tr>
+<td style="width:50%;">Name of the Applicant (with initials) </td>
+<td colspan="2"><input type="text" name="n" placeholder="eg., Kamaraj.K"><p id="head1" style="color:red"></p></td>
+</tr>
+
+<tr>
+<td>Father's / Mother's / Guardian's Name </td>
+<td colspan="2"><input type="text" name="f"></td>
+</tr>
+
+<tr>
+<td>Gender</td>
+<td><input type="radio" name="gender" value="male" checked>Male<input type="radio" name="gender" value="female">Female</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Date of Birth</td>
+<td colspan="2"><input type="date" name="dob" placeholder="Select the date from calendar" max="2000-12-31"></td>
+</tr>
+
+<tr>
+<td>Address for Contact</td>
+<td colspan="2"><input type="text" name="address" placeholder="Door No,Street Name"></td>
+</tr>
+
+<tr>
+<td>City/Town/Village</td>
+<td colspan="2"><input type="text" name="ctv"></td>
+</tr>
+
+<tr>
+<td>Mobile Number (Whatsapp Number) </td>
+<td colspan="2"><input type="text" maxlength="10" name="mn"><p id="head2" style="color:red"></p></td>
+</tr>
+
+<tr>
+<td>Email ID </td>
+<td colspan="2"><input type="text" name="email" ></td><p id="head" style="color:red"></p>
+</tr>
+<tr> </tr>
+<tr> </tr>
+<tr>
+<td colspan="3" align="center"><input type="submit" name="sb" value="REGISTER"></td>
+</tr>
+</table>
+</div>
+</fieldset>
+</form>
+
+<script>
+
+function validateForm()
+{ 
+  var name=document.myForm.n.value;  
+  var fname=document.myForm.f.value;  
+  var dob=document.myForm.dob.value;  
+  var address=document.myForm.address.value;  
+  var place=document.myForm.ctv.value;  
+  
+
+  var mobile=document.myForm.mn.value;  
+  var mob = /^[1-9]{1}[0-9]{9}$/;   
+  
+  var x=document.myForm.email.value;  
+  var atposition=x.indexOf("@");  
+  var dotposition=x.lastIndexOf(".");
+  
+  
+  if(name==""||fname==""||dob==""||address==""||place=="")
+  {
+  document.getElementById("head1").innerHTML="Please Enter values for the Empty Fields";
+  return false;   
+  }  
+    
+  else if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length)
+  {  
+  document.getElementById("head").innerHTML="Please Enter the Valid Email address";
+  document.myForm.email.focus();
+  return false;  
+  }  
+ 
+ else if (mob.test(mobile)==false) {
+    document.getElementById("head2").innerHTML="Invalid number; must be ten digits";
+    document.myForm.mn.focus();
+    return false;
+   }
+  
+  else 
+  {
+    return true;
+  }
+}
+</script>
+</body>
+</html>
